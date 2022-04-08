@@ -37,7 +37,7 @@ function handleChunk(chunk) {
       messageBuffer += char;
       failureBuffer += char;
     if(messageBuffer.length <= PREAMBLE_BINARY.length) {
-      if(!PREAMBLE_BINARY.startsWith(messageBuffer)) {
+      while(messageBuffer.length && !PREAMBLE_BINARY.startsWith(messageBuffer)) {
         console.log('\nresetting', messageBuffer, char, index)
         messageBuffer = messageBuffer.slice(1)
         console.log('aftereset', messageBuffer)
